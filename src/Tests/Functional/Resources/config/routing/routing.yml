@@ -1,0 +1,2 @@
+address:
+    resource: "@EvrinomaAddressBundle/Resources/config/routes.yml"

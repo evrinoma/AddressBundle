@@ -1,0 +1,9 @@
+services:
+  evrinoma.address.test.functional.action.address:
+    class: Evrinoma\AddressBundle\Tests\Functional\Action\BaseAddress
+    public: true
+    arguments:
+
+  Evrinoma\AddressBundle\Tests\Functional\Action\BaseAddress:
+    alias: evrinoma.address.test.functional.action.address
+    public: true

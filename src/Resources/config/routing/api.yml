@@ -1,0 +1,3 @@
+address_api:
+  resource: "@EvrinomaAddressBundle/Controller/AddressApiController.php"
+  type: annotation

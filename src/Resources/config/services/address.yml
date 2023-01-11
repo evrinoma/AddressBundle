@@ -1,0 +1,91 @@
+services:
+  Evrinoma\AddressBundle\Controller\AddressApiController:
+    alias: evrinoma.address.api.controller
+    public: true
+
+  evrinoma.address.api.controller:
+    class: Evrinoma\AddressBundle\Controller\AddressApiController
+    arguments:
+      - '@jms_serializer'
+      - '@request_stack'
+      - '@evrinoma.dto.factory'
+      - '@evrinoma.address.facade'
+    autowire: true
+
+  evrinoma.address.facade:
+    class: Evrinoma\AddressBundle\Facade\Address\Facade
+    arguments:
+      - '@evrinoma.address.command.manager'
+      - '@evrinoma.address.query.manager'
+      - '@evrinoma.address.adaptor'
+    autowire: true
+
+  Evrinoma\AddressBundle\Facade\Address\FacadeInterface:
+    alias: evrinoma.address.facade
+
+  evrinoma.address.factory:
+    class: Evrinoma\AddressBundle\Factory\Address\Factory
+    public: true
+    arguments:
+
+  evrinoma.address.orm.repository:
+    class: Evrinoma\AddressBundle\Repository\Orm\Address\AddressRepository
+    public: true
+    arguments:
+
+  evrinoma.address.command.manager:
+    class: Evrinoma\AddressBundle\Manager\CommandManager
+    arguments:
+      - '@evrinoma.address.validator'
+      - '@evrinoma.address.repository'
+      - '@evrinoma.address.factory'
+      - '@evrinoma.address.command.mediator'
+
+  Evrinoma\AddressBundle\Manager\CommandManagerInterface:
+    alias: evrinoma.address.command.manager
+
+  evrinoma.address.query.manager:
+    class: Evrinoma\AddressBundle\Manager\QueryManager
+    arguments:
+      - '@evrinoma.address.repository'
+
+  Evrinoma\AddressBundle\Manager\QueryManagerInterface:
+    alias: evrinoma.address.query.manager
+    
+  evrinoma.address.validator:
+    class: Evrinoma\AddressBundle\Validator\AddressValidator
+    public: true
+    arguments:
+
+  Evrinoma\AddressBundle\Validator\AddressValidator:
+    alias: evrinoma.address.validator
+
+  evrinoma.address.query.orm.mediator:
+    class: Evrinoma\AddressBundle\Mediator\Orm\QueryMediator
+    public: true
+    arguments:
+
+  Evrinoma\AddressBundle\Mediator\Orm\QueryMediator:
+    alias: evrinoma.address.query.orm.mediator
+
+  evrinoma.address.command.mediator:
+    class: Evrinoma\AddressBundle\Mediator\CommandMediator
+    public: true
+    arguments:
+
+  Evrinoma\AddressBundle\Mediator\CommandMediator:
+    alias: evrinoma.address.command.mediator
+
+  Evrinoma\AddressBundle\Mediator\CommandMediatorInterface:
+    alias: evrinoma.address.command.mediator
+
+  evrinoma.address.pre.validator:
+    class: Evrinoma\AddressBundle\PreValidator\DtoPreValidator
+    public: true
+    arguments:
+
+  Evrinoma\AddressBundle\PreValidator\DtoPreValidator:
+    alias: evrinoma.address.pre.validator
+
+  Evrinoma\AddressBundle\PreValidator\DtoPreValidatorInterface:
+    alias: evrinoma.address.pre.validator

@@ -1,0 +1,5 @@
+services:
+  evrinoma.address.fixtures.address:
+    class: Evrinoma\AddressBundle\Fixtures\AddressFixtures
+    tags:
+      - { name: doctrine.fixture.orm }

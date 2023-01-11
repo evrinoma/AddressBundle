@@ -1,0 +1,6 @@
+jms_serializer:
+  metadata:
+    directories:
+      AddressBundle:
+        namespace_prefix: "Evrinoma\\AddressBundle"
+        path: '%kernel.root_dir%/Resources/config/serializer/AddressBundle'

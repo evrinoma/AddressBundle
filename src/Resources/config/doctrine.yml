@@ -1,0 +1,5 @@
+services:
+  evrinoma.address.object_manager:
+    class:  Doctrine\Persistence\ObjectManager
+    public: false
+    arguments: ['%evrinoma.address.model_manager_name%']

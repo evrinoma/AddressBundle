@@ -1,0 +1,32 @@
+Evrinoma\AddressBundle\Model\Address\AbstractAddress:
+  exclusion_policy: ALL
+  properties:
+    id:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    createdAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    updatedAt:
+      type: DateTimeImmutable<'Y-m-d H:i'>
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    active:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    town:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    address:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    zip:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    country:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true
+    countryCode:
+      groups: [ API_GET_ADDRESS, API_POST_ADDRESS, API_PUT_ADDRESS, ]
+      expose: true

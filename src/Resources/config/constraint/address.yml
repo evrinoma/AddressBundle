@@ -1,0 +1,18 @@
+services:
+  evrinoma.address.constraint.property.name:
+    class: Evrinoma\AddressBundle\Constraint\Property\Zip
+
+  evrinoma.address.constraint.property.url:
+    class: Evrinoma\AddressBundle\Constraint\Property\Town
+
+  evrinoma.address.constraint.property.active:
+    class: Evrinoma\AddressBundle\Constraint\Property\Active
+
+  evrinoma.address.constraint.property.country_code:
+    class: Evrinoma\AddressBundle\Constraint\Property\CountryCode
+
+  evrinoma.address.constraint.property.country:
+    class: Evrinoma\AddressBundle\Constraint\Property\Country
+
+  evrinoma.address.constraint.property.address:
+    class: Evrinoma\AddressBundle\Constraint\Property\Address
