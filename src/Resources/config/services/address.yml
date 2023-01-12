@@ -89,3 +89,9 @@ services:
 
   Evrinoma\AddressBundle\PreValidator\DtoPreValidatorInterface:
     alias: evrinoma.address.pre.validator
+
+  evrinoma.address.address.form.rest.group:
+    class: Evrinoma\AddressBundle\Form\Rest\Address\AddressChoiceType
+    arguments:
+      - '@evrinoma.address.query.manager'
+    tags: { - name: form.type }
