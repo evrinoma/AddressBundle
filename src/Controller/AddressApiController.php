@@ -117,6 +117,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
      *                 example={
      *                     "class": "Evrinoma\AddressBundle\Dto\AddressApiDto",
      *                     "active": "b",
+     *                     "id": "2",
      *                     "country": "Россия",
      *                     "country_code": "de",
      *                     "town": "Ташкент",

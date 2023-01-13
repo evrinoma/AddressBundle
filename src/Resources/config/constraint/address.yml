@@ -1,5 +1,5 @@
 services:
-  evrinoma.address.constraint.property.name:
+  evrinoma.address.constraint.property.zip:
     class: Evrinoma\AddressBundle\Constraint\Property\Zip
 
   evrinoma.address.constraint.property.url:
