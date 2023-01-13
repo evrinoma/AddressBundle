@@ -47,7 +47,7 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
     {
         return [
             AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
-            AddressApiDtoInterface::ID => Id::default(),
+            AddressApiDtoInterface::ID => Id::value(),
             AddressApiDtoInterface::ZIP => Zip::default(),
             AddressApiDtoInterface::ACTIVE => Active::value(),
             AddressApiDtoInterface::TOWN => Town::default(),
@@ -59,7 +59,7 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
 
     public function actionPost(): void
     {
-        $this->createAddress();
+        $created = $this->createAddress();
         $this->testResponseStatusCreated();
     }
 
