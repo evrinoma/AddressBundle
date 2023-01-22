@@ -111,9 +111,9 @@ class AddressFixtures extends AbstractFixture implements FixtureGroupInterface, 
         $short = self::getReferenceName();
         $i = 0;
 
-        foreach (static::$data as $record) {
+        foreach ($this->getData() as $record) {
             /** @var BaseAddress $entity */
-            $entity = new static::$class();
+            $entity = $this->getEntity();
             $entity
                 ->setZip($record[AddressApiDtoInterface::ZIP])
                 ->setTown($record[AddressApiDtoInterface::TOWN])
@@ -121,7 +121,11 @@ class AddressFixtures extends AbstractFixture implements FixtureGroupInterface, 
                 ->setCountryCode($record[AddressApiDtoInterface::COUNTRY_CODE])
                 ->setCountry($record[AddressApiDtoInterface::COUNTRY])
                 ->setCreatedAt(new \DateTimeImmutable($record['created_at']))
-                ->setActive($record[AddressApiDtoInterface::ACTIVE]);
+                ->setActive($record[AddressApiDtoInterface::ACTIVE])
+            ;
+
+            $this->expandEntity($entity);
+
             $this->addReference($short.$i, $entity);
             $manager->persist($entity);
             ++$i;
