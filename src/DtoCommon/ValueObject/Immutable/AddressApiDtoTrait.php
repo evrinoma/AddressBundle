@@ -22,13 +22,15 @@ trait AddressApiDtoTrait
 {
     protected ?AddressApiDtoInterface $addressApiDto = null;
 
+    protected static string $classAddressApiDto = AddressApiDto::class;
+
     public function genRequestAddressApiDto(?Request $request): ?\Generator
     {
         if ($request) {
             $address = $request->get(AddressApiDtoInterface::ADDRESS);
             if ($address) {
                 $newRequest = $this->getCloneRequest();
-                $address[DtoInterface::DTO_CLASS] = AddressApiDto::class;
+                $address[DtoInterface::DTO_CLASS] = static::$classAddressApiDto;
                 $newRequest->request->add($address);
 
                 yield $newRequest;
