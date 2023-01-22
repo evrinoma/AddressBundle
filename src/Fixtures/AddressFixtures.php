@@ -124,7 +124,7 @@ class AddressFixtures extends AbstractFixture implements FixtureGroupInterface, 
                 ->setActive($record[AddressApiDtoInterface::ACTIVE])
             ;
 
-            $this->expandEntity($entity);
+            $this->expandEntity($entity, $record);
 
             $this->addReference($short.$i, $entity);
             $manager->persist($entity);
