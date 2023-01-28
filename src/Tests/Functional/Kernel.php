@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Evrinoma\AddressBundle\Tests\Functional;
 
+use Evrinoma\AddressBundle\EvrinomaAddressBundle;
+use Evrinoma\DtoBundle\EvrinomaDtoBundle;
 use Evrinoma\TestUtilsBundle\Kernel\AbstractApiKernel;
 
 /**
@@ -30,8 +32,8 @@ class Kernel extends AbstractApiKernel
     {
         return array_merge(
             parent::registerBundles(), [
-                new \Evrinoma\DtoBundle\EvrinomaDtoBundle(),
-                new \Evrinoma\AddressBundle\EvrinomaAddressBundle(),
+                new EvrinomaDtoBundle(),
+                new EvrinomaAddressBundle(),
             ]
         );
     }
