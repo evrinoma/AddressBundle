@@ -90,7 +90,7 @@ services:
   Evrinoma\AddressBundle\PreValidator\DtoPreValidatorInterface:
     alias: evrinoma.address.pre.validator
 
-  evrinoma.address.address.form.rest.group:
+  evrinoma.address.address.form.rest.address:
     class: Evrinoma\AddressBundle\Form\Rest\Address\AddressChoiceType
     arguments:
       - '@evrinoma.address.query.manager'
