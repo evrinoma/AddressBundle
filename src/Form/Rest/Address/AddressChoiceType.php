@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Evrinoma\AddressBundle\Form\Rest\Address;
 
 use Doctrine\DBAL\Exception\TableNotFoundException;
-use Evrinoma\AddressBundle\Dto\AddressApiDto;
 use Evrinoma\AddressBundle\Dto\AddressApiDtoInterface;
 use Evrinoma\AddressBundle\Exception\AddressNotFoundException;
 use Evrinoma\AddressBundle\Manager\QueryManagerInterface;
@@ -25,11 +24,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddressChoiceType extends AbstractType
 {
+    protected static string $dtoClass;
+
     private QueryManagerInterface $queryManager;
 
-    public function __construct(QueryManagerInterface $queryManager)
+    public function __construct(QueryManagerInterface $queryManager, string $dtoClass)
     {
         $this->queryManager = $queryManager;
+        static::$dtoClass = $dtoClass;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -38,7 +40,7 @@ class AddressChoiceType extends AbstractType
             $value = [];
             try {
                 if ($options->offsetExists('data')) {
-                    $criteria = $this->queryManager->criteria(new AddressApiDto());
+                    $criteria = $this->queryManager->criteria(new static::$dtoClass());
                     switch ($options->offsetGet('data')) {
                         case AddressApiDtoInterface::ADDRESS:
                             foreach ($criteria as $entity) {
