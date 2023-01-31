@@ -65,30 +65,53 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
 
     public function actionCriteriaNotFound(): void
     {
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::ACTIVE => Active::wrong()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::ACTIVE => Active::wrong(),
+        ]);
         $this->testResponseStatusNotFound();
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $find);
 
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::ID => Id::value(), AddressApiDtoInterface::ACTIVE => Active::block(), AddressApiDtoInterface::ZIP => Zip::wrong()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::ID => Id::value(),
+            AddressApiDtoInterface::ACTIVE => Active::block(),
+            AddressApiDtoInterface::ZIP => Zip::wrong(),
+        ]);
         $this->testResponseStatusNotFound();
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $find);
     }
 
     public function actionCriteria(): void
     {
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::ACTIVE => Active::value(), AddressApiDtoInterface::ID => Id::value()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::ACTIVE => Active::value(),
+            AddressApiDtoInterface::ID => Id::value(),
+        ]);
         $this->testResponseStatusOK();
         Assert::assertCount(1, $find[PayloadModel::PAYLOAD]);
 
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::ACTIVE => Active::delete()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::ACTIVE => Active::delete(),
+        ]);
         $this->testResponseStatusOK();
         Assert::assertCount(3, $find[PayloadModel::PAYLOAD]);
 
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::ACTIVE => Active::delete(), AddressApiDtoInterface::ZIP => Zip::value()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::ACTIVE => Active::delete(),
+            AddressApiDtoInterface::ZIP => Zip::value(),
+        ]);
         $this->testResponseStatusOK();
         Assert::assertCount(1, $find[PayloadModel::PAYLOAD]);
 
-        $find = $this->criteria([AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(), AddressApiDtoInterface::COUNTRY => Country::value(), AddressApiDtoInterface::COUNTRY_CODE => CountryCode::value()]);
+        $find = $this->criteria([
+            AddressApiDtoInterface::DTO_CLASS => static::getDtoClass(),
+            AddressApiDtoInterface::COUNTRY => Country::value(),
+            AddressApiDtoInterface::COUNTRY_CODE => CountryCode::value(),
+        ]);
         $this->testResponseStatusOK();
         Assert::assertCount(4, $find[PayloadModel::PAYLOAD]);
     }
@@ -111,7 +134,14 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
     {
         $find = $this->assertGet(Id::value());
 
-        $updated = $this->put(static::getDefault([AddressApiDtoInterface::ID => Id::value(), AddressApiDtoInterface::ZIP => Zip::value(), AddressApiDtoInterface::TOWN => Town::value(), AddressApiDtoInterface::ADDRESS => Address::value(), AddressApiDtoInterface::COUNTRY_CODE => CountryCode::value(), AddressApiDtoInterface::COUNTRY => Country::value()]));
+        $updated = $this->put(static::getDefault([
+            AddressApiDtoInterface::ID => Id::value(),
+            AddressApiDtoInterface::ZIP => Zip::value(),
+            AddressApiDtoInterface::TOWN => Town::value(),
+            AddressApiDtoInterface::ADDRESS => Address::value(),
+            AddressApiDtoInterface::COUNTRY_CODE => CountryCode::value(),
+            AddressApiDtoInterface::COUNTRY => Country::value(),
+        ]));
         $this->testResponseStatusOK();
 
         Assert::assertEquals($find[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], $updated[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID]);
@@ -143,7 +173,7 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
 
     public function actionDeleteUnprocessable(): void
     {
-        $response = $this->delete(Id::empty());
+        $response = $this->delete(Id::blank());
         Assert::assertArrayHasKey(PayloadModel::PAYLOAD, $response);
         $this->testResponseStatusUnprocessable();
     }
@@ -167,27 +197,42 @@ class BaseAddress extends AbstractServiceTest implements BaseAddressTestInterfac
         $this->testResponseStatusCreated();
         $this->checkResult($created);
 
-        $query = static::getDefault([AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], AddressApiDtoInterface::ZIP => Zip::empty()]);
+        $query = static::getDefault([
+            AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID],
+            AddressApiDtoInterface::ZIP => Zip::blank(),
+        ]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], AddressApiDtoInterface::TOWN => Town::empty()]);
+        $query = static::getDefault([
+            AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID],
+            AddressApiDtoInterface::TOWN => Town::blank(),
+        ]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], AddressApiDtoInterface::ADDRESS => Address::empty()]);
+        $query = static::getDefault([
+            AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID],
+            AddressApiDtoInterface::ADDRESS => Address::blank(),
+        ]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], AddressApiDtoInterface::COUNTRY_CODE => CountryCode::empty()]);
+        $query = static::getDefault([
+            AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID],
+            AddressApiDtoInterface::COUNTRY_CODE => CountryCode::blank(),
+        ]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
 
-        $query = static::getDefault([AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID], AddressApiDtoInterface::COUNTRY => Country::empty()]);
+        $query = static::getDefault([
+            AddressApiDtoInterface::ID => $created[PayloadModel::PAYLOAD][0][AddressApiDtoInterface::ID],
+            AddressApiDtoInterface::COUNTRY => Country::blank(),
+        ]);
 
         $this->put($query);
         $this->testResponseStatusUnprocessable();
