@@ -108,7 +108,7 @@ class AddressFixtures extends AbstractFixture implements FixtureGroupInterface, 
      */
     protected function create(ObjectManager $manager): self
     {
-        $short = self::getReferenceName();
+        $short = static::getReferenceName();
         $i = 0;
 
         foreach ($this->getData() as $record) {
