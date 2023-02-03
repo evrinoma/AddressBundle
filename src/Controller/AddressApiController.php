@@ -56,12 +56,16 @@ final class AddressApiController extends AbstractWrappedApiController implements
 
     /**
      * @Rest\Post("/api/address/create", options={"expose": true}, name="api_address_create")
+     *
      * @OA\Post(
      *     tags={"address"},
      *     description="the method perform create address",
+     *
      *     @OA\RequestBody(
+     *
      *         @OA\MediaType(
      *             mediaType="application/json",
+     *
      *             @OA\Schema(
      *                 example={
      *                     "class": "Evrinoma\AddressBundle\Dto\AddressApiDto",
@@ -71,6 +75,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
      *                     "zip": "640003",
      *                 },
      *                 type="object",
+     *
      *                 @OA\Property(property="class", type="string", default="Evrinoma\AddressBundle\Dto\AddressApiDto"),
      *                 @OA\Property(property="country", type="string"),
      *                 @OA\Property(property="country_code", type="string"),
@@ -81,6 +86,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
      *         )
      *     )
      * )
+     *
      * @OA\Response(response=200, description="Create address")
      *
      * @return JsonResponse
@@ -107,12 +113,16 @@ final class AddressApiController extends AbstractWrappedApiController implements
 
     /**
      * @Rest\Put("/api/address/save", options={"expose": true}, name="api_address_save")
+     *
      * @OA\Put(
      *     tags={"address"},
      *     description="the method perform save address for current entity",
+     *
      *     @OA\RequestBody(
+     *
      *         @OA\MediaType(
      *             mediaType="application/json",
+     *
      *             @OA\Schema(
      *                 example={
      *                     "class": "Evrinoma\AddressBundle\Dto\AddressApiDto",
@@ -124,6 +134,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
      *                     "zip": "640003",
      *                 },
      *                 type="object",
+     *
      *                 @OA\Property(property="class", type="string", default="Evrinoma\AddressBundle\Dto\AddressApiDto"),
      *                 @OA\Property(property="id", type="string"),
      *                 @OA\Property(property="active", type="string"),
@@ -136,6 +147,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
      *         )
      *     )
      * )
+     *
      * @OA\Response(response=200, description="Save address")
      *
      * @return JsonResponse
@@ -160,30 +172,36 @@ final class AddressApiController extends AbstractWrappedApiController implements
 
     /**
      * @Rest\Delete("/api/address/delete", options={"expose": true}, name="api_address_delete")
+     *
      * @OA\Delete(
      *     tags={"address"},
+     *
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
      *         name="class",
      *         required=true,
+     *
      *         @OA\Schema(
      *             type="string",
      *             default="Evrinoma\AddressBundle\Dto\AddressApiDto",
      *             readOnly=true
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="id Entity",
      *         in="query",
      *         name="id",
      *         required=true,
+     *
      *         @OA\Schema(
      *             type="string",
      *             default="3",
      *         )
      *     )
      * )
+     *
      * @OA\Response(response=200, description="Delete address")
      *
      * @return JsonResponse
@@ -209,68 +227,84 @@ final class AddressApiController extends AbstractWrappedApiController implements
 
     /**
      * @Rest\Get("/api/address/criteria", options={"expose": true}, name="api_address_criteria")
+     *
      * @OA\Get(
      *     tags={"address"},
+     *
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
      *         name="class",
      *         required=true,
+     *
      *         @OA\Schema(
      *             type="string",
      *             default="Evrinoma\AddressBundle\Dto\AddressApiDto",
      *             readOnly=true
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="id Entity",
      *         in="query",
      *         name="id",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="address",
      *         in="query",
      *         name="address",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="country",
      *         in="query",
      *         name="country",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="zip",
      *         in="query",
      *         name="zip",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="Country Code",
      *         in="query",
      *         name="country_code",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="town",
      *         in="query",
      *         name="town",
+     *
      *         @OA\Schema(
      *             type="string",
      *         )
      *     ),
      * )
+     *
      * @OA\Response(response=200, description="Return address")
      *
      * @return JsonResponse
@@ -295,30 +329,36 @@ final class AddressApiController extends AbstractWrappedApiController implements
 
     /**
      * @Rest\Get("/api/address", options={"expose": true}, name="api_address")
+     *
      * @OA\Get(
      *     tags={"address"},
+     *
      *     @OA\Parameter(
      *         description="class",
      *         in="query",
      *         name="class",
      *         required=true,
+     *
      *         @OA\Schema(
      *             type="string",
      *             default="Evrinoma\AddressBundle\Dto\AddressApiDto",
      *             readOnly=true
      *         )
      *     ),
+     *
      *     @OA\Parameter(
      *         description="id Entity",
      *         in="query",
      *         name="id",
      *         required=true,
+     *
      *         @OA\Schema(
      *             type="string",
      *             default="3",
      *         )
      *     )
      * )
+     *
      * @OA\Response(response=200, description="Return address")
      *
      * @return JsonResponse

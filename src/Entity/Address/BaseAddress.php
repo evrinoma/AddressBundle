@@ -18,6 +18,7 @@ use Evrinoma\AddressBundle\Model\Address\AbstractAddress;
 
 /**
  * @ORM\Table(name="e_address")
+ *
  * @ORM\Entity
  */
 class BaseAddress extends AbstractAddress
