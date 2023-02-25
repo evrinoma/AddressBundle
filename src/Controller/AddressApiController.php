@@ -105,6 +105,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
         try {
             $this->facade->post($addressApiDto, $group, $json);
         } catch (\Exception $e) {
+            $json = [];
             $error = $this->setRestStatus($e);
         }
 
@@ -164,6 +165,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
         try {
             $this->facade->put($addressApiDto, $group, $json);
         } catch (\Exception $e) {
+            $json = [];
             $error = $this->setRestStatus($e);
         }
 
@@ -219,6 +221,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
         try {
             $this->facade->delete($addressApiDto, '', $json);
         } catch (\Exception $e) {
+            $json = [];
             $error = $this->setRestStatus($e);
         }
 
@@ -321,6 +324,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
         try {
             $this->facade->criteria($addressApiDto, $group, $json);
         } catch (\Exception $e) {
+            $json = [];
             $error = $this->setRestStatus($e);
         }
 
@@ -375,6 +379,7 @@ final class AddressApiController extends AbstractWrappedApiController implements
         try {
             $this->facade->get($addressApiDto, $group, $json);
         } catch (\Exception $e) {
+            $json = [];
             $error = $this->setRestStatus($e);
         }
 
